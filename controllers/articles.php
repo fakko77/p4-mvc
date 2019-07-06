@@ -1,5 +1,5 @@
 <?php 
-
+require('models/articles.manager.php');
 function homeCRLT(){
     require('views/utilisateur-head.php');
    $tableau =  articleView();

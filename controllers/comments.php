@@ -1,5 +1,5 @@
 <?php
-
+require('models/comments.manager.php');
 function showsComAdmCRLT(){
     $id = $_GET['id'];
     $tableau = completeCom($id);
