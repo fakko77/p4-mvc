@@ -1,11 +1,11 @@
 <?php
 
-require('models/article.php');
-require('models/comment.php');
-require('controllers/articles.php');
-require('controllers/comments.php');
-require('controllers/db.php');
-require('models/db.model.php');
+require_once('models/article.php');
+require_once('models/comment.php');
+require_once('controllers/articles.php');
+require_once('controllers/comments.php');
+require_once('controllers/db.php');
+require_once('models/db.model.php');
 
 $url = '';
 $id= '';
@@ -89,7 +89,7 @@ elseif($url == 'logout.php'){
 }
 
 else {
-    require '404.php';
+    require_once '404.php';
 }
 
 
