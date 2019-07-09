@@ -52,7 +52,8 @@
 						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
 					<div class="panel-body">
 						<div class="canvas-wrapper">
-						<?php showTitle($id);?> <BR> <?PHP 
+						<?php  $ArticleManager = new ArticleManager();
+						$ArticleManager->showTitle($id);?> <BR> <?PHP 
 												$a= 0;
 												$b = count($tableauAffiche) ; 
 											while($a < $b){

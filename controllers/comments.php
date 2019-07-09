@@ -1,8 +1,11 @@
 <?php
-require('models/comments.manager.php');
+require_once('models/comment_manager.php');
+
+$CommentManager = new CommentManager();
 function showsComAdmCRLT(){
+    $CommentManager = new CommentManager();
     $id = $_GET['id'];
-    $tableau = completeCom($id);
+    $tableau = $CommentManager -> completeCom($id);
    /**/ $tableauAffiche =[];
     $a= 0;
     $b = count($tableau) ; 
@@ -47,7 +50,8 @@ function showsComAdmCRLT(){
 
 }
 function showsComSCRLT(){
-   $tableau = showCommentsSignaled();
+    $CommentManager = new CommentManager();
+   $tableau = $CommentManager -> showCommentsSignaled();
     //var_dump($tableau);
     $a= 0;
     $b = count($tableau) ; 
@@ -78,31 +82,32 @@ function showsComSCRLT(){
 }
 
 function UsersCreatComCRLT(){
-
-    
+    $CommentManager = new CommentManager();
   
     $id = $_GET['id'];
     if(isset($_POST["addcom"]))  
     {    
     $nom = $_POST['nom'];
     $com = $_POST['com'];
-    creatCom($nom , $com , $id);
+    $CommentManager -> creatCom($nom , $com , $id);
     }  
    
 
 }
 function admDeleteComCRLT(){
+    $CommentManager = new CommentManager();
 
 $id = $_GET['id'];
 $idcom = $_GET['idcom'];
-deleteCom($idcom);
+$CommentManager->deleteCom($idcom);
 header("location:index.php?url=admin-com.php&id=$id");  
 }
 
 function userComSCRLT(){
+    $CommentManager = new CommentManager();
     $id = $_GET['id'];
     $idcom = $_GET['idcom'];
-    signaler($idcom);
+    $CommentManager->signaler($idcom);
 
     
 header("location:index.php?url=post.php&id=$id");  

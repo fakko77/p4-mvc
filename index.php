@@ -1,7 +1,7 @@
 <?php
 
-require('models/articles.model.php');
-require('models/comments.model.php');
+require('models/article.php');
+require('models/comment.php');
 require('controllers/articles.php');
 require('controllers/comments.php');
 require('controllers/db.php');
@@ -22,6 +22,8 @@ if(isset($_GET['idcom'])) {
 }
 
 if($url == '') {
+    
+
     homeCRLT();
 } elseif($url == 'log.php'){
   

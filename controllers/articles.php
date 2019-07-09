@@ -1,8 +1,12 @@
 <?php 
-require('models/articles.manager.php');
+require_once('models/article_manager.php');
+
+
+
 function homeCRLT(){
+    $articleManager = new ArticleManager();
     require('views/utilisateur-head.php');
-   $tableau =  articleView();
+   $tableau =  $articleManager->articleView();
    $a= 0;
    $b = count($tableau) ; 
   
@@ -29,21 +33,22 @@ function homeCRLT(){
 }
 
 function addArticleCRLT(){
-
+    $articleManager = new ArticleManager();
      
     if(isset($_POST["addArticle"]))  
     {    
     $titre = $_POST['titre'];
     $contenu = $_POST['area1'];
    /* $articles = new articles();
-    $articles ->*/ creatArticle($titre , $contenu);
+    $articles ->*/ $articleManager->creatArticle($titre , $contenu);
    
     }  
    require('views/admin-header.php');
     require('views/admin-panel.php');
 }
 function tableAdmCRLT(){
-    $tableau = panel();
+    $articleManager = new ArticleManager();
+    $tableau = $articleManager->panel();
    
     $a= 0;
     $b = count($tableau) ; 
@@ -78,12 +83,13 @@ function tableAdmCRLT(){
 
 }
 function showsPageCRLT(){
-
+    $articleManager = new ArticleManager();
+    $CommentManager = new CommentManager();
     $id = $_GET['id'];
-    $article =  readArticlePage($id);
+    $article =  $articleManager->readArticlePage($id);
     $id = $_GET['id'];
    
-    $tableau = showComments($id);
+    $tableau = $CommentManager->showComments($id);
 
     $a= 0;
     $b = count($tableau) ; 
@@ -112,15 +118,16 @@ function showsPageCRLT(){
 }
 
 function admDeleteArticleCRLT(){
+    $articleManager = new ArticleManager();
     $id = $_GET['id'];
-    deleteArticle($id);
+    $articleManager ->deleteArticle($id);
     header("location:index.php?url=admin-edit.php");  
 }
 
 function admUpdateArticleCRLT(){
-
+    $articleManager = new ArticleManager();
     $id = $_GET['id'];
-    $tableau = readArticle($id); 
+    $tableau = $articleManager->readArticle($id); 
     
 $a= 0;
 $affiche;
@@ -149,7 +156,7 @@ $affiche =  "<form method='post'>
                 $contenu = $_POST['area1'];
                 echo $titre;
                 echo $contenu;
-                updateArticle($titre , $contenu , $id);
+                $articleManager->updateArticle($titre , $contenu , $id);
      
           }  
          
