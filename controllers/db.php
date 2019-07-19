@@ -1,30 +1,26 @@
-<?php   
+<?php
 
-function checkSessionCRLT(){
+function checkSessionCRLT()
+{
 
+    session_start();
+    if (isset($_SESSION["username"])) {
 
-    session_start();  
-     if(isset($_SESSION["username"]))  
-     {  
-    
-     }  
-     else  
-     {  
-          header("location:log.php");  
-     }  
+    } else {
+        header("location:log.php");
+    }
 }
-function logControllersCRLT(){
-
+function logControllersCRLT()
+{
 
     checklog();
-    require('views/log.php');
-
+    require 'views/log.php';
 
 }
-function logoutCRTL(){
+function logoutCRTL()
+{
 
-    session_start();  
-    session_destroy();  
-    header("location:index.php");  
+    session_start();
+    session_destroy();
+    header("location:index.php");
 }
-?>

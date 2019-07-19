@@ -1,4 +1,4 @@
-<?php
+ <?php
 class article{
     private $titre;
     private $contenu;
